@@ -3,16 +3,16 @@ import { galleryItems } from './gallery-items.js';
 const options = {
     captionPosition: "bottom",
     captionDelay: 250,
-    captionSelector: "self"
+    captionsData: "alt",
 }
 
 const galleryEl = document.querySelector(".gallery");
 
-const galleryMurkup = createGalleryitems(galleryItems)
+const galleryMurkup = createGalleryitems(galleryItems);
 
-galleryEl.insertAdjacentHTML("beforeend", galleryMurkup)
+galleryEl.insertAdjacentHTML("beforeend", galleryMurkup);
 
-const gallery = new SimpleLightbox('.gallery a', options);
+const gallery = new SimpleLightbox('.gallery a', options)
 
 function createGalleryitems(image){
 return image.map(({preview, original, description}) => {
