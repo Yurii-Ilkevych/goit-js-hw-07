@@ -40,15 +40,25 @@ function selectImage(event) {
     }
 const largeImage = event.target.dataset.source;
 
-const instance = basicLightbox.create(`<img src="${largeImage}" >`);
-instance.show();
-
-window.addEventListener("keydown", clouseImageModal);
-function clouseImageModal(event) {
-
-    if(event.code === "Escape"){
-           instance.close()
-       }
-    }
-
+createMurkap(largeImage);
 };
+
+
+
+function createMurkap(largeImage) {
+    const instance = basicLightbox.create(`<img src="${largeImage}" >`)
+    instance.show(window.addEventListener("keydown", clouseImageModal));
+
+    function clouseImageModal(event) {
+        console.log(event)
+        if(event.code === "Escape"){
+            
+               instance.close()
+               window.removeEventListener("keydown", clouseImageModal)
+           }
+        }
+    
+}
+
+
+
